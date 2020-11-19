@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+        <h1>Hi, {{ current_user.username }}!</h1>
+        {% for device in devices %}
+        <div>
+        <p>
+                <b>You own device {{ device.id }}</b>
+                {% for unlock in device.unlocks %}
+                        <p> Unlocked by {{ unlock.username }} {{ moment(unlock.timestamp).fromNow() }} </p>
+                        
+                {% endfor %}
+        </p>
+        </div>
+        ________________________________________________________________________________________________
+        {% endfor %}
+        <p>New Device? <a href="{{ url_for('main.regDevice') }}">Click to register your device!</a></p>
+        <p>Test unlock <a href="{{ url_for('main.testUnlock') }}"> Click here</a></p>
+{% endblock %}
