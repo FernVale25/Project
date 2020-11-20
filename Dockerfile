@@ -1,22 +1,26 @@
 FROM python:rc-buster
 
-RUN mkdir -p ./dockerapp/src
+RUN adduser logview
 
-WORKDIR /app/src
+WORKDIR /home/logview
 
-RUN pip install flask-wtf
-RUN pip install flask-sqlalchemy
-RUN pip install flask-migrate
-RUN pip install flask-login
-RUN pip install email-validator
-RUN pip install flask-bootstrap
-RUN pip install flask-moment
+COPY requirements.txt requirements.txt
+RUN apt install gcc
+RUN apt install make
+RUN python3 -m venv venv
+RUN pip install gunicorn
+RUN pip install -r requirements.txt
 
-COPY . /dockerapp/src
+
+COPY app app
+COPY migrations migrations
+COPY LogView.py config.py boot.sh ./
+RUN chmod +x boot.sh
+
+ENV FLASK_APP LogView.py
+
+RUN chown -R logview:logview ./
+USER logview
 
 EXPOSE 5000
-
-ENV FLASK_DEBUG=1
-ENV FLASK_APP=1
-
-CMD ["flask", "run", "-h", "0.0.0.0"]
+ENTRYPOINT ["./boot.sh"]
