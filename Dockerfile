@@ -8,8 +8,8 @@ COPY requirements.txt requirements.txt
 RUN apt install gcc
 RUN apt install make
 RUN python3 -m venv venv
-RUN pip install gunicorn
-RUN pip install -r requirements.txt
+RUN venv/bin/pip install -r requirements.txt
+RUN venv/bin/pip install gunicorn pymysql
 
 
 COPY app app
