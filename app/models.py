@@ -19,7 +19,6 @@ userDevicesTable = db.Table('UserDevices',
 
 #The User Model
 #Many users can have many devices
-#One user can have many unlocks
 class User(UserMixin, db.Model):
     __tablename__= 'userTable'
     id = db.Column(db.Integer, primary_key=True)
@@ -69,8 +68,8 @@ class Unlock(db.Model):
     __tablename__ = 'unlockTable'
     id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    username = db.Column(db.String(64))
     dID = db.Column(db.Integer, db.ForeignKey('deviceTable.id'))
-    username = db.Column(db.Integer, db.ForeignKey('userTable.username'))
 
     def __repr__(self):
-        return '<user_id {}'.format(self.user_id) + ' at {}'.format(self.timestamp)
+        return '<user_id {}'.format(self.username) + ' at {}'.format(self.timestamp)

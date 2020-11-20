@@ -1,8 +1,8 @@
-"""in it
+"""empty message
 
-Revision ID: 03fa0ce5ec38
+Revision ID: 8c8e895a3986
 Revises: 
-Create Date: 2020-11-10 23:51:22.139085
+Create Date: 2020-11-19 21:31:15.839514
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '03fa0ce5ec38'
+revision = '8c8e895a3986'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -40,10 +40,9 @@ def upgrade():
     op.create_table('unlockTable',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
+    sa.Column('username', sa.String(length=64), nullable=True),
     sa.Column('dID', sa.Integer(), nullable=True),
-    sa.Column('username', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['dID'], ['deviceTable.id'], ),
-    sa.ForeignKeyConstraint(['username'], ['userTable.username'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_unlockTable_timestamp'), 'unlockTable', ['timestamp'], unique=False)

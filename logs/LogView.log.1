@@ -1,64 +1,78 @@
-2020-11-19 19:54:31,592 ERROR: Exception on /errors/500.html [GET] [in c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py:1891]
-Traceback (most recent call last):
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1926, in dispatch_request
-    self.raise_routing_exception(req)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1908, in raise_routing_exception
-    raise request.routing_exception
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\ctx.py", line 350, in match_request
-    result = self.url_adapter.match(return_rule=True)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\werkzeug\routing.py", line 1945, in match
-    raise NotFound()
-werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-
-During handling of the above exception, another exception occurred:
-
+2020-11-19 21:31:22,932 ERROR: Exception on /index [GET] [in c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1816, in handle_user_exception
-    return self.handle_http_exception(e)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1744, in handle_http_exception
-    return handler(e)
-  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\errors\handlers.py", line 7, in not_found_error
-    return render_template('errors/404.html'), 404
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\templating.py", line 137, in render_template
-    return _render(
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\templating.py", line 120, in _render
-    rv = template.render(context)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\jinja2\environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\jinja2\_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\templates\errors\404.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
-    {%- block html %}
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
-    {% block body -%}
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
-    {% block content -%}
-  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\templates\base.html", line 49, in block "content"
-    {% block app_content %}{% endblock %}
-  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\templates\errors\404.html", line 5, in block "app_content"
-    <p><a href="{{ url_for('index') }}">Back</a></p>
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\helpers.py", line 370, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
     reraise(exc_type, exc_value, tb)
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
     raise value
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\helpers.py", line 357, in url_for
-    rv = url_adapter.build(
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\werkzeug\routing.py", line 2179, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'index'. Did you mean 'main.index' instead?
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\utils.py", line 270, in decorated_view
+    elif not current_user.is_authenticated:
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\werkzeug\local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\werkzeug\local.py", line 306, in _get_current_object
+    return self.__local()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\login_manager.py", line 318, in _load_user
+    user = self._user_callback(user_id)
+  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\models.py", line 10, in load_user
+    return User.query.get(int(id))
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\base.py", line 451, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\base.py", line 430, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\mapper.py", line 1352, in _configure_all
+    configure_mappers()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\mapper.py", line 3295, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'mapped class Device->deviceTable'. Original exception was: Could not determine join condition between parent/child tables on relationship Device.unlocks - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
+2020-11-19 21:31:23,576 ERROR: Exception on /index [GET] [in c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\utils.py", line 270, in decorated_view
+    elif not current_user.is_authenticated:
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\werkzeug\local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\werkzeug\local.py", line 306, in _get_current_object
+    return self.__local()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\utils.py", line 346, in _get_user
+    current_app.login_manager._load_user()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\login_manager.py", line 318, in _load_user
+    user = self._user_callback(user_id)
+  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\models.py", line 10, in load_user
+    return User.query.get(int(id))
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\base.py", line 451, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\base.py", line 430, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\mapper.py", line 1352, in _configure_all
+    configure_mappers()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\mapper.py", line 3295, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'mapped class Device->deviceTable'. Original exception was: Could not determine join condition between parent/child tables on relationship Device.unlocks - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.

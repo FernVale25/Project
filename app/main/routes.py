@@ -78,7 +78,7 @@ def testUnlock():
 		db.session.add(unlock)
 		d = Device.query.filter_by(id=form.deviceField.data).first()
 		d.unlocks.append(unlock)
-		#user.unlocks.append(unlock)
+		current_user
 		db.session.commit()
 		flash("Succesful test of unlock!")
 		return redirect(url_for('main.index'))
