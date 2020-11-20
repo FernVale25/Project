@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 . venv/bin/activate
 while true; do
     flask db upgrade
@@ -8,5 +8,4 @@ while true; do
     echo Upgrade command failed, retrying in 5 secs...
     sleep 5
 done
-flask db upgrade
 exec gunicorn -b :5000 --access-logfile - --error-logfile - LogView:app

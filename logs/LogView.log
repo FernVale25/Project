@@ -37,3 +37,4 @@ Traceback (most recent call last):
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\mapper.py", line 3295, in configure_mappers
     raise e
 sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'mapped class Device->deviceTable'. Original exception was: Could not determine join condition between parent/child tables on relationship Device.unlocks - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
+2020-11-19 21:31:28,578 INFO: LogView startup [in C:\Users\Fernando\Documents\Software Engineering\Project\app\__init__.py:51]
