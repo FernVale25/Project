@@ -10,7 +10,7 @@ RUN apt install make
 RUN python3 -m venv venv
 RUN venv/bin/pip install -r requirements.txt
 RUN venv/bin/pip install gunicorn pymysql
-RUN apk add openssh && echo "root:Docker!" | chpasswd 
+RUN echo "root:Docker!" | chpasswd 
 
 
 COPY app app
@@ -24,4 +24,5 @@ RUN chown -R logview:logview ./
 USER logview
 
 EXPOSE 5000
+EXPOSE 80 2222
 ENTRYPOINT ["./boot.sh"]
