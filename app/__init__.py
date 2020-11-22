@@ -9,7 +9,6 @@ from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from config import Config
 from sqlalchemy import create_engine
-import pyodbc
 import urllib.parse
 
 db = SQLAlchemy()
