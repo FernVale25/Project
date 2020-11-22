@@ -41,5 +41,5 @@ ENV FLASK_APP LogView.py
 RUN chown -R logview:logview ./
 USER logview
 
-EXPOSE 5000 80 2222
+EXPOSE 5000
 ENTRYPOINT ["./boot.sh"]
