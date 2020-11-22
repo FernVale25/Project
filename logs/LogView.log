@@ -1,4 +1,14 @@
-2020-11-19 21:31:23,734 ERROR: Exception on /index [GET] [in c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py:1891]
+2020-11-21 18:03:45,411 INFO: LogView startup [in C:\Users\Fernando\Documents\Software Engineering\Project\app\__init__.py:65]
+2020-11-21 18:03:49,714 ERROR: Exception on /auth/login [POST] [in c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1276, in _execute_context
+    self.dialect.do_execute(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+pyodbc.ProgrammingError: ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'userTable'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,29 +22,38 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\utils.py", line 270, in decorated_view
-    elif not current_user.is_authenticated:
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\werkzeug\local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\werkzeug\local.py", line 306, in _get_current_object
-    return self.__local()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\utils.py", line 26, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\utils.py", line 346, in _get_user
-    current_app.login_manager._load_user()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\login_manager.py", line 318, in _load_user
-    user = self._user_callback(user_id)
-  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\models.py", line 10, in load_user
-    return User.query.get(int(id))
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
-    mapper = orm.class_mapper(type)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\base.py", line 451, in class_mapper
-    mapper = _inspect_mapped_class(class_, configure=configure)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\base.py", line 430, in _inspect_mapped_class
-    mapper._configure_all()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\mapper.py", line 1352, in _configure_all
-    configure_mappers()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\mapper.py", line 3295, in configure_mappers
-    raise e
-sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'mapped class Device->deviceTable'. Original exception was: Could not determine join condition between parent/child tables on relationship Device.unlocks - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
-2020-11-19 21:31:28,578 INFO: LogView startup [in C:\Users\Fernando\Documents\Software Engineering\Project\app\__init__.py:51]
+  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\auth\routes.py", line 16, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3429, in first
+    ret = list(self[0:1])
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3203, in __getitem__
+    return list(res)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3535, in __iter__
+    return self._execute_and_instances(context)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3560, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1124, in _execute_clauseelement
+    ret = self._execute_context(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1316, in _execute_context
+    self._handle_dbapi_exception(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1510, in _handle_dbapi_exception
+    util.raise_(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1276, in _execute_context
+    self.dialect.do_execute(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (pyodbc.ProgrammingError) ('42S02', "[42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid object name 'userTable'. (208) (SQLExecDirectW); [42S02] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+[SQL: SELECT TOP 1 [userTable].id AS [userTable_id], [userTable].username AS [userTable_username], [userTable].email AS [userTable_email], [userTable].password_hash AS [userTable_password_hash] 
+FROM [userTable] 
+WHERE [userTable].username = ?]
+[parameters: ('susan',)]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+2020-11-22 11:16:46,337 INFO: LogView startup [in C:\Users\Fernando\Documents\Software Engineering\Project\app\__init__.py:65]
+2020-11-22 11:17:31,290 INFO: LogView startup [in C:\Users\Fernando\Documents\Software Engineering\Project\app\__init__.py:65]
+2020-11-22 11:17:37,607 INFO: LogView startup [in C:\Users\Fernando\Documents\Software Engineering\Project\app\__init__.py:65]

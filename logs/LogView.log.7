@@ -1,4 +1,4 @@
-2020-11-21 18:02:42,134 ERROR: Exception on /auth/login [POST] [in c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py:1891]
+2020-11-21 17:51:38,391 ERROR: Exception on /auth/register [POST] [in c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2336, in _wrap_pool_connect
     return fn()
@@ -32,7 +32,7 @@ Traceback (most recent call last):
     return dialect.connect(*cargs, **cparams)
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\default.py", line 493, in connect
     return self.dbapi.connect(*cargs, **cparams)
-pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC Driver 17 for SQL Server]MAX_PROVS: Connection string is not valid [87].  (87) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Login timeout expired (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online. (87)')
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (53)')
 
 The above exception was the direct cause of the following exception:
 
@@ -49,8 +49,20 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\auth\routes.py", line 16, in login
-    user = User.query.filter_by(username=form.username.data).first()
+  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\auth\routes.py", line 38, in register
+    if form.validate_on_submit():
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_wtf\form.py", line 100, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\wtforms\form.py", line 318, in validate
+    return super(Form, self).validate(extra)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\wtforms\form.py", line 150, in validate
+    if not field.validate(self, extra):
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\wtforms\fields\core.py", line 226, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\wtforms\fields\core.py", line 246, in _run_validation_chain
+    validator(form, self)
+  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\auth\forms.py", line 22, in validate_username
+    user = User.query.filter_by(username=username.data).first()
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3429, in first
     ret = list(self[0:1])
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3203, in __getitem__
@@ -109,5 +121,5 @@ Traceback (most recent call last):
     return dialect.connect(*cargs, **cparams)
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\default.py", line 493, in connect
     return self.dbapi.connect(*cargs, **cparams)
-sqlalchemy.exc.OperationalError: (pyodbc.OperationalError) ('08001', '[08001] [Microsoft][ODBC Driver 17 for SQL Server]MAX_PROVS: Connection string is not valid [87].  (87) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Login timeout expired (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online. (87)')
+sqlalchemy.exc.OperationalError: (pyodbc.OperationalError) ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (53)')
 (Background on this error at: http://sqlalche.me/e/13/e3q8)

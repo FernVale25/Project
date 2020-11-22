@@ -8,6 +8,9 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from config import Config
+from sqlalchemy import create_engine
+import pyodbc
+import urllib.parse
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -20,7 +23,17 @@ moment = Moment()
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
-
+    params = urllib.parse.quote_plus(
+        "DRIVER={ODBC Driver 17 for SQL Server};" +
+        "SERVER=tcp:fau-se.database.windows.net,1433;" +
+        "DATABASE=FAUSELOGVIEWER;" +
+        "UID=fause;" +
+        "PWD=esuaf123!@#;" + 
+        "Connection Timeout=30"
+        )
+    app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" %params
+    app.config['SECRET_KEY'] = 'supersecret'
+    print('connection is ok')
     db.init_app(app)
     migrate.init_app(app, db)
     login.init_app(app)

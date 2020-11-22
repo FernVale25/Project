@@ -1,4 +1,41 @@
-2020-11-19 21:31:22,932 ERROR: Exception on /index [GET] [in c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py:1891]
+2020-11-21 18:03:27,050 ERROR: Exception on /auth/login [POST] [in c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2336, in _wrap_pool_connect
+    return fn()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 364, in connect
+    return _ConnectionFairy._checkout(self)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 778, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 495, in checkout
+    rec = pool._do_get()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\impl.py", line 140, in _do_get
+    self._dec_overflow()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.raise_(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\impl.py", line 137, in _do_get
+    return self._create_connection()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 309, in _create_connection
+    return _ConnectionRecord(self)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 440, in __init__
+    self.__connect(first_connect_check=True)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 661, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.raise_(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 656, in __connect
+    connection = pool._invoke_creator(self)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\default.py", line 493, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+pyodbc.Error: ('HY000', '[HY000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Cannot open server "sqldb" requested by the login.  The login failed. (40532) (SQLDriverConnect); [HY000] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [HY000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Cannot open server "sqldb" requested by the login.  The login failed. (40532); [HY000] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0)')
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,67 +49,65 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\utils.py", line 270, in decorated_view
-    elif not current_user.is_authenticated:
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\werkzeug\local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\werkzeug\local.py", line 306, in _get_current_object
-    return self.__local()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\utils.py", line 26, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\utils.py", line 346, in _get_user
-    current_app.login_manager._load_user()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\login_manager.py", line 318, in _load_user
-    user = self._user_callback(user_id)
-  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\models.py", line 10, in load_user
-    return User.query.get(int(id))
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
-    mapper = orm.class_mapper(type)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\base.py", line 451, in class_mapper
-    mapper = _inspect_mapped_class(class_, configure=configure)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\base.py", line 430, in _inspect_mapped_class
-    mapper._configure_all()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\mapper.py", line 1352, in _configure_all
-    configure_mappers()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\mapper.py", line 3295, in configure_mappers
-    raise e
-sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'mapped class Device->deviceTable'. Original exception was: Could not determine join condition between parent/child tables on relationship Device.unlocks - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
-2020-11-19 21:31:23,576 ERROR: Exception on /index [GET] [in c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py:1891]
-Traceback (most recent call last):
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
-    raise value
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\utils.py", line 270, in decorated_view
-    elif not current_user.is_authenticated:
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\werkzeug\local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\werkzeug\local.py", line 306, in _get_current_object
-    return self.__local()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\utils.py", line 26, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\utils.py", line 346, in _get_user
-    current_app.login_manager._load_user()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_login\login_manager.py", line 318, in _load_user
-    user = self._user_callback(user_id)
-  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\models.py", line 10, in load_user
-    return User.query.get(int(id))
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
-    mapper = orm.class_mapper(type)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\base.py", line 451, in class_mapper
-    mapper = _inspect_mapped_class(class_, configure=configure)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\base.py", line 430, in _inspect_mapped_class
-    mapper._configure_all()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\mapper.py", line 1352, in _configure_all
-    configure_mappers()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\mapper.py", line 3295, in configure_mappers
-    raise e
-sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'mapped class Device->deviceTable'. Original exception was: Could not determine join condition between parent/child tables on relationship Device.unlocks - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
+  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\auth\routes.py", line 16, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3429, in first
+    ret = list(self[0:1])
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3203, in __getitem__
+    return list(res)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3535, in __iter__
+    return self._execute_and_instances(context)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3556, in _execute_and_instances
+    conn = self._get_bind_args(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3571, in _get_bind_args
+    return fn(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3550, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1138, in connection
+    return self._connection_for_bind(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1146, in _connection_for_bind
+    return self.transaction._connection_for_bind(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\session.py", line 433, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2302, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2339, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1583, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2336, in _wrap_pool_connect
+    return fn()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 364, in connect
+    return _ConnectionFairy._checkout(self)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 778, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 495, in checkout
+    rec = pool._do_get()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\impl.py", line 140, in _do_get
+    self._dec_overflow()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.raise_(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\impl.py", line 137, in _do_get
+    return self._create_connection()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 309, in _create_connection
+    return _ConnectionRecord(self)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 440, in __init__
+    self.__connect(first_connect_check=True)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 661, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.raise_(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 656, in __connect
+    connection = pool._invoke_creator(self)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\default.py", line 493, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.DBAPIError: (pyodbc.Error) ('HY000', '[HY000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Cannot open server "sqldb" requested by the login.  The login failed. (40532) (SQLDriverConnect); [HY000] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [HY000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Cannot open server "sqldb" requested by the login.  The login failed. (40532); [HY000] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0)')
+(Background on this error at: http://sqlalche.me/e/13/dbapi)

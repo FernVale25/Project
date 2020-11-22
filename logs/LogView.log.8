@@ -1,4 +1,5 @@
-2020-11-21 18:02:42,134 ERROR: Exception on /auth/login [POST] [in c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py:1891]
+2020-11-21 17:50:01,676 INFO: LogView startup [in C:\Users\Fernando\Documents\Software Engineering\Project\app\__init__.py:66]
+2020-11-21 17:51:00,521 ERROR: Exception on /auth/login [POST] [in c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2336, in _wrap_pool_connect
     return fn()
@@ -32,7 +33,7 @@ Traceback (most recent call last):
     return dialect.connect(*cargs, **cparams)
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\default.py", line 493, in connect
     return self.dbapi.connect(*cargs, **cparams)
-pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC Driver 17 for SQL Server]MAX_PROVS: Connection string is not valid [87].  (87) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Login timeout expired (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online. (87)')
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (53)')
 
 The above exception was the direct cause of the following exception:
 
@@ -109,5 +110,5 @@ Traceback (most recent call last):
     return dialect.connect(*cargs, **cparams)
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\default.py", line 493, in connect
     return self.dbapi.connect(*cargs, **cparams)
-sqlalchemy.exc.OperationalError: (pyodbc.OperationalError) ('08001', '[08001] [Microsoft][ODBC Driver 17 for SQL Server]MAX_PROVS: Connection string is not valid [87].  (87) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Login timeout expired (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online. (87)')
+sqlalchemy.exc.OperationalError: (pyodbc.OperationalError) ('08001', '[08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]SQL Server does not exist or access denied. (17) (SQLDriverConnect); [08001] [Microsoft][ODBC SQL Server Driver][DBNETLIB]ConnectionOpen (Connect()). (53)')
 (Background on this error at: http://sqlalche.me/e/13/e3q8)

@@ -1,64 +1,113 @@
-2020-11-19 19:54:31,592 ERROR: Exception on /errors/500.html [GET] [in c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py:1891]
+2020-11-21 17:58:27,090 ERROR: Exception on /auth/login [POST] [in c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py:1891]
 Traceback (most recent call last):
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1926, in dispatch_request
-    self.raise_routing_exception(req)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1908, in raise_routing_exception
-    raise request.routing_exception
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\ctx.py", line 350, in match_request
-    result = self.url_adapter.match(return_rule=True)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\werkzeug\routing.py", line 1945, in match
-    raise NotFound()
-werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2336, in _wrap_pool_connect
+    return fn()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 364, in connect
+    return _ConnectionFairy._checkout(self)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 778, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 495, in checkout
+    rec = pool._do_get()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\impl.py", line 140, in _do_get
+    self._dec_overflow()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.raise_(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\impl.py", line 137, in _do_get
+    return self._create_connection()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 309, in _create_connection
+    return _ConnectionRecord(self)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 440, in __init__
+    self.__connect(first_connect_check=True)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 661, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.raise_(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 656, in __connect
+    connection = pool._invoke_creator(self)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\default.py", line 493, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+pyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC Driver 17 for SQL Server]MAX_PROVS: Connection string is not valid [87].  (87) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Login timeout expired (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online. (87)')
 
-During handling of the above exception, another exception occurred:
+The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1816, in handle_user_exception
-    return self.handle_http_exception(e)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1744, in handle_http_exception
-    return handler(e)
-  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\errors\handlers.py", line 7, in not_found_error
-    return render_template('errors/404.html'), 404
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\templating.py", line 137, in render_template
-    return _render(
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\templating.py", line 120, in _render
-    rv = template.render(context)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\jinja2\environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\jinja2\_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\templates\errors\404.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
-    {%- block html %}
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
-    {% block body -%}
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
-    {% block content -%}
-  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\templates\base.html", line 49, in block "content"
-    {% block app_content %}{% endblock %}
-  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\templates\errors\404.html", line 5, in block "app_content"
-    <p><a href="{{ url_for('index') }}">Back</a></p>
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\helpers.py", line 370, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 2216, in handle_url_build_error
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
     reraise(exc_type, exc_value, tb)
   File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
     raise value
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\helpers.py", line 357, in url_for
-    rv = url_adapter.build(
-  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\werkzeug\routing.py", line 2179, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'index'. Did you mean 'main.index' instead?
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\Fernando\Documents\Software Engineering\Project\app\auth\routes.py", line 16, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3429, in first
+    ret = list(self[0:1])
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3203, in __getitem__
+    return list(res)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3535, in __iter__
+    return self._execute_and_instances(context)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3556, in _execute_and_instances
+    conn = self._get_bind_args(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3571, in _get_bind_args
+    return fn(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3550, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1138, in connection
+    return self._connection_for_bind(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1146, in _connection_for_bind
+    return self.transaction._connection_for_bind(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\orm\session.py", line 433, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2302, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2339, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1583, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2336, in _wrap_pool_connect
+    return fn()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 364, in connect
+    return _ConnectionFairy._checkout(self)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 778, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 495, in checkout
+    rec = pool._do_get()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\impl.py", line 140, in _do_get
+    self._dec_overflow()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.raise_(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\impl.py", line 137, in _do_get
+    return self._create_connection()
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 309, in _create_connection
+    return _ConnectionRecord(self)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 440, in __init__
+    self.__connect(first_connect_check=True)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 661, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 68, in __exit__
+    compat.raise_(
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\pool\base.py", line 656, in __connect
+    connection = pool._invoke_creator(self)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "c:\users\fernando\documents\software engineering\project\venv\lib\site-packages\sqlalchemy\engine\default.py", line 493, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (pyodbc.OperationalError) ('08001', '[08001] [Microsoft][ODBC Driver 17 for SQL Server]MAX_PROVS: Connection string is not valid [87].  (87) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Login timeout expired (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [08001] [Microsoft][ODBC Driver 17 for SQL Server]A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online. (87)')
+(Background on this error at: http://sqlalche.me/e/13/e3q8)
